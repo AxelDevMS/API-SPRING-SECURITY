@@ -33,7 +33,7 @@ public class CategoryController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/get/{categoryId}")
     public ResponseEntity<CategoryEntity> findById(@PathVariable Long categoryId){
         Optional<CategoryEntity> category = categoryService.findById(categoryId);
         if (category.isPresent())
@@ -48,13 +48,13 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(category);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{categoryId}")
     public ResponseEntity<CategoryEntity> update(@PathVariable Long categoryId, @RequestBody @Valid CategoryDto categoryDto){
         CategoryEntity category =  categoryService.update(categoryId,categoryDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(category);
     }
 
-    @PutMapping("/disabled/{id}")
+    @PutMapping("/disabled/{categoryId}")
     public ResponseEntity<CategoryEntity> disabledById(@PathVariable Long categoryId){
         CategoryEntity category =  categoryService.disabledById(categoryId);
         return ResponseEntity.status(HttpStatus.CREATED).body(category);

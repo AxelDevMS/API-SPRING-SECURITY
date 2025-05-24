@@ -29,7 +29,7 @@ public class ProductController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/get/{productId}")
     public ResponseEntity<ProductEntity> findById(@PathVariable Long productId){
         Optional<ProductEntity> product = productService.findById(productId);
         if (product.isPresent())
@@ -44,13 +44,13 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{productId}")
     public ResponseEntity<ProductEntity> update(@PathVariable Long productId, @RequestBody @Valid ProductDto productDto){
         ProductEntity product =  productService.update(productId, productDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
-    @PutMapping("/disabled/{id}")
+    @PutMapping("/disabled/{productId}")
     public ResponseEntity<ProductEntity> disabledById(@PathVariable Long productId){
         ProductEntity product =  productService.disabledById(productId);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
