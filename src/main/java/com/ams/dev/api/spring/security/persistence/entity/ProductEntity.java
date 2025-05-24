@@ -20,6 +20,10 @@ public class ProductEntity {
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
+
     public static enum ProductStatus{
         ENABLED, DISABLED;
     }
@@ -55,5 +59,13 @@ public class ProductEntity {
 
     public void setStatus(ProductStatus status) {
         this.status = status;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 }

@@ -1,29 +1,20 @@
 package com.ams.dev.api.spring.security.dto;
 
-import com.ams.dev.api.spring.security.persistence.entity.ProductEntity;
+import com.ams.dev.api.spring.security.persistence.entity.CategoryEntity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
-public class ProductDto implements Serializable {
+public class CategoryDto implements Serializable {
 
     private Long id;
 
     @NotBlank
     private String name;
 
-    @DecimalMin(value = "0.01")
-    private BigDecimal price;
-
     private String status;
-
-    @Min(value = 1)
-    private Long categoryId;
 
     public Long getId() {
         return id;
@@ -41,27 +32,11 @@ public class ProductDto implements Serializable {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
     }
 }
