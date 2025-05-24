@@ -51,7 +51,6 @@ public class ProductServiceImpl implements ProductService {
 
         productFromDB.setName(productDto.getName());
         productFromDB.setPrice(productDto.getPrice());
-        productFromDB.setStatus(ProductEntity.ProductStatus.ENABLED);
 
         CategoryEntity category = new CategoryEntity();
         category.setId(productDto.getCategoryId());
