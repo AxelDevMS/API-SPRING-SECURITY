@@ -17,7 +17,7 @@ public class ProductDto implements Serializable {
     @NotBlank
     private String name;
 
-    @DecimalMin(value = "0.01")
+    @DecimalMin(value = "0.01", message = "El precio debe ser mayor a cero")
     private BigDecimal price;
 
     private String status;
