@@ -26,7 +26,7 @@ public class HttpSecurityConfig {
                 .sessionManagement( sessionMagConfig -> sessionMagConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //que tipo de sesión se va tener
                 .authenticationProvider(authenticationProvider) //estartaegia de autenticación que se va utlizar
                 .authorizeHttpRequests(authReqConfig -> {
-                   authReqConfig.requestMatchers(HttpMethod.POST,"/customers").permitAll();
+                   authReqConfig.requestMatchers(HttpMethod.POST,"/customers/save").permitAll();
                    authReqConfig.requestMatchers(HttpMethod.POST,"/auth/**").permitAll();
                    authReqConfig.anyRequest().authenticated();
                 })//configura la rutas publica y privadas
