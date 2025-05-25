@@ -27,7 +27,8 @@ public class HttpSecurityConfig {
                 .authenticationProvider(authenticationProvider) //estartaegia de autenticación que se va utlizar
                 .authorizeHttpRequests(authReqConfig -> {
                    authReqConfig.requestMatchers(HttpMethod.POST,"/customers/save").permitAll();
-                   authReqConfig.requestMatchers(HttpMethod.POST,"/auth/**").permitAll();
+                   authReqConfig.requestMatchers(HttpMethod.POST,"/auth/login").permitAll();
+                    authReqConfig.requestMatchers(HttpMethod.GET,"/auth/validate").permitAll();
                    authReqConfig.anyRequest().authenticated();
                 })//configura la rutas publica y privadas
                 .build();//crear un defaults security chain
