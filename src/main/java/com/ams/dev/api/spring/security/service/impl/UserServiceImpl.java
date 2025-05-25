@@ -7,6 +7,7 @@ import com.ams.dev.api.spring.security.persistence.repository.UserRepository;
 import com.ams.dev.api.spring.security.persistence.util.Role;
 import com.ams.dev.api.spring.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,6 +17,9 @@ public class UserServiceImpl  implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserEntity create(UserDto userDto) {
 
@@ -24,7 +28,7 @@ public class UserServiceImpl  implements UserService {
         UserEntity user = new UserEntity();
         user.setName(userDto.getName());
         user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setRole(Role.ROLE_CUSTOMER);
 
         return userRepository.save(user);
